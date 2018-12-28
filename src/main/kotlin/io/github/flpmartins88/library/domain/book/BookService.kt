@@ -9,8 +9,8 @@ class BookService (
 ) {
 
     fun save(book: Mono<Book>) = bookRepository.save(book)
-    fun delete(bookId: Int) = bookRepository.delete(bookId)
+    fun delete(bookId: Int) = bookRepository.delete(bookId).map { it.deletedCount > 0 }
     fun get(bookId: Int) = bookRepository.findById(bookId)
-    fun search(value: String) = bookRepository.search(value)
+    fun search(name: String) = bookRepository.search(name)
 
 }

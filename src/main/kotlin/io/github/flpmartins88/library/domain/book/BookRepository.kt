@@ -18,7 +18,9 @@ class BookRepository (
     fun delete(bookId: Int) = mongoTemplate.remove(Query(where("_id").isEqualTo(bookId)))
 
     fun findById(bookId: Int) = mongoTemplate.findById(bookId, Book::class.java)
-    fun search(value: String) = mongoTemplate.find(Query(where("name").regex(".*$value.*", "i")), Book::class.java)
+    fun search(value: String) = mongoTemplate.find(
+            Query(where("name").regex(".*$value.*", "i")), Book::class.java
+    )
 
 
 }

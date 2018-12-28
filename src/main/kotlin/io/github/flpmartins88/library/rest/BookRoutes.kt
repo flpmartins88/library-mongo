@@ -1,4 +1,4 @@
-package io.github.flpmartins88.library.domain.book
+package io.github.flpmartins88.library.rest
 
 import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
@@ -10,7 +10,7 @@ class BookRoutes (
 ) {
 
     @Bean
-    fun bookRoutes() = router {
+    fun bookRouter() = router {
         "/books".nest {
             GET("/", bookHandler::search)
             GET("/{id}", bookHandler::get)
